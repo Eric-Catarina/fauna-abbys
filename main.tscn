@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgmgqjbyuv6vv"]
+[gd_scene load_steps=6 format=3 uid="uid://dgmgqjbyuv6vv"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ib4rp"]
 [ext_resource type="Texture2D" uid="uid://21irab4stkxa" path="res://icon.svg" id="1_puacw"]
+[ext_resource type="Texture2D" uid="uid://c68im8iofxf3i" path="res://mars-bg-2.png" id="2_cqbwk"]
 [ext_resource type="Texture2D" uid="uid://b2s5gcj5xuytp" path="res://alien-removebg-preview.png" id="2_epxo7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pofpn"]
@@ -34,35 +35,41 @@ offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
+[node name="Mars-bg-2" type="Sprite2D" parent="."]
+position = Vector2(0, 80)
+scale = Vector2(1, 0.8)
+texture = ExtResource("2_cqbwk")
+centered = false
+
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(602, 74)
+position = Vector2(655, 153)
 texture = ExtResource("1_puacw")
 
 [node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(82, 228)
+position = Vector2(80, 324.51)
 texture = ExtResource("1_puacw")
 
 [node name="Icon4" type="Sprite2D" parent="."]
-position = Vector2(69, 74)
+position = Vector2(71, 120)
 texture = ExtResource("1_puacw")
 
 [node name="Icon5" type="Sprite2D" parent="."]
-position = Vector2(610, 245)
+position = Vector2(623, 327.51)
 texture = ExtResource("1_puacw")
 
 [node name="Icon6" type="Sprite2D" parent="."]
-position = Vector2(1147, 79)
+position = Vector2(1149, 125)
 texture = ExtResource("1_puacw")
 
 [node name="Icon7" type="Sprite2D" parent="."]
-position = Vector2(1838, 229)
+position = Vector2(1847, 323.51)
 texture = ExtResource("1_puacw")
 
 [node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(1840, 81)
+position = Vector2(1842, 127)
 texture = ExtResource("1_puacw")
 
 [node name="Alien-removebg-preview" type="Sprite2D" parent="."]
-position = Vector2(1072, 249)
+position = Vector2(1150, 325.51)
 scale = Vector2(0.45, 0.422042)
 texture = ExtResource("2_epxo7")

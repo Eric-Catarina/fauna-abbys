@@ -1,6 +1,6 @@
 extends Node2D
 
-var desired_height = 330 # Defina a altura desejada da janela
+var desired_height = 400 # Defina a altura desejada da janela
 var window_size: Vector2
 
 func _ready() -> void:
@@ -8,7 +8,6 @@ func _ready() -> void:
 	print(window_size)
 	# Defina o tamanho da janela para ocupar toda a largura do monitor e altura desejada
 	DisplayServer.window_set_size(Vector2(window_size.x, desired_height))
-	
 	# Posicione a janela na parte inferior da tela
 	DisplayServer.window_set_position(Vector2(0, window_size.y - desired_height))
 	
