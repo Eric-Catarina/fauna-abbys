@@ -35,3 +35,12 @@ shape = SubResource("RectangleShape2D_pofpn")
 
 [node name="Creature" parent="." instance=ExtResource("3_hidma")]
 position = Vector2(778, 233)
+
+[node name="Creature2" parent="." instance=ExtResource("3_hidma")]
+position = Vector2(186, 165)
+
+[node name="Creature3" parent="." instance=ExtResource("3_hidma")]
+position = Vector2(1367, 336)
+
+[node name="Creature4" parent="." instance=ExtResource("3_hidma")]
+position = Vector2(1560, 159)

@@ -3,7 +3,7 @@ extends BTAction
 @export var target_pos_var := &"pos"
 @export var dir_var := &"dir"
 
-@export var speed_var = 40
+@export var speed_var = 100
 @export var tolerance = 10
 
 func _tick(_delta:float) -> Status:
