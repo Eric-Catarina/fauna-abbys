@@ -1,9 +1,83 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgmgqjbyuv6vv"]
+[gd_scene load_steps=15 format=3 uid="uid://dgmgqjbyuv6vv"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ib4rp"]
 [ext_resource type="Texture2D" uid="uid://21irab4stkxa" path="res://icon.svg" id="1_puacw"]
 [ext_resource type="Texture2D" uid="uid://c68im8iofxf3i" path="res://mars-bg-2.png" id="2_cqbwk"]
-[ext_resource type="Texture2D" uid="uid://b2s5gcj5xuytp" path="res://alien-removebg-preview.png" id="2_epxo7"]
+[ext_resource type="Texture2D" uid="uid://b2s5gcj5xuytp" path="res://creature/alien-removebg-preview.png" id="2_epxo7"]
+[ext_resource type="Script" path="res://creature/creature.gd" id="3_q2kgg"]
+[ext_resource type="BTSequence" uid="uid://co1cnaxnuossw" path="res://creature/first_bt_sequence.tres" id="5_dposa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn7w0"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_dnxwh"]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_qajtq"]
+blackboard_plan = SubResource("BlackboardPlan_dnxwh")
+root_task = ExtResource("5_dposa")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_mx4tf"]
+
+[sub_resource type="Animation" id="Animation_jpgcg"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Alien-removebg-preview:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.35, 0.35), Vector2(0.3, 0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Alien-removebg-preview:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.113446, 0.113446]
+}
+
+[sub_resource type="Animation" id="Animation_mja4e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Alien-removebg-preview:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.45, 0.422042)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Alien-removebg-preview:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m13mh"]
+_data = {
+"RESET": SubResource("Animation_mja4e"),
+"idle": SubResource("Animation_jpgcg")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pofpn"]
 
@@ -15,9 +89,36 @@ anchor_mode = 0
 
 [node name="Ecosystem" type="Node2D" parent="."]
 
+[node name="Mars-bg-2" type="Sprite2D" parent="Ecosystem"]
+position = Vector2(0, 80)
+scale = Vector2(1, 0.8)
+texture = ExtResource("2_cqbwk")
+centered = false
+
 [node name="Flora" type="Node2D" parent="Ecosystem"]
 
 [node name="Fauna" type="Node2D" parent="Ecosystem"]
+
+[node name="Creature" type="CharacterBody2D" parent="Ecosystem/Fauna"]
+motion_mode = 1
+script = ExtResource("3_q2kgg")
+
+[node name="Alien-removebg-preview" type="Sprite2D" parent="Ecosystem/Fauna/Creature"]
+position = Vector2(1153, 337)
+scale = Vector2(0.45, 0.422042)
+texture = ExtResource("2_epxo7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ecosystem/Fauna/Creature"]
+shape = SubResource("RectangleShape2D_jn7w0")
+
+[node name="BTPlayer" type="BTPlayer" parent="Ecosystem/Fauna/Creature"]
+behavior_tree = SubResource("BehaviorTree_qajtq")
+blackboard_plan = SubResource("BlackboardPlan_mx4tf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ecosystem/Fauna/Creature"]
+libraries = {
+"": SubResource("AnimationLibrary_m13mh")
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ecosystem"]
 
@@ -27,19 +128,6 @@ shape = SubResource("RectangleShape2D_pofpn")
 [node name="EnvironmentController" type="Node2D" parent="."]
 
 [node name="InteractionManager" type="Node2D" parent="."]
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Mars-bg-2" type="Sprite2D" parent="."]
-position = Vector2(0, 80)
-scale = Vector2(1, 0.8)
-texture = ExtResource("2_cqbwk")
-centered = false
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(655, 153)
@@ -68,8 +156,3 @@ texture = ExtResource("1_puacw")
 [node name="Icon3" type="Sprite2D" parent="."]
 position = Vector2(1842, 127)
 texture = ExtResource("1_puacw")
-
-[node name="Alien-removebg-preview" type="Sprite2D" parent="."]
-position = Vector2(1150, 325.51)
-scale = Vector2(0.45, 0.422042)
-texture = ExtResource("2_epxo7")

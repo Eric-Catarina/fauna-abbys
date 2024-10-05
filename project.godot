@@ -28,6 +28,16 @@ window/size/always_on_top=true
 window/size/transparent=true
 window/per_pixel_transparency/allowed=true
 
+[file_customization]
+
+folder_colors={
+"res://creature/": "teal"
+}
+
+[piforge_ai]
+
+api_key="d3a1e378Y8I8o6B7L0m6e0Y0F69141r3GQLXZNI6Cjo7IdLG9LZF6eYaY49IZeXG"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

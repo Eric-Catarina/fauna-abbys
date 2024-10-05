@@ -1,0 +1,7 @@
+[gd_resource type="BTSequence" load_steps=2 format=3 uid="uid://co1cnaxnuossw"]
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_xetht"]
+method = &"slide_left"
+
+[resource]
+children = [SubResource("BTCallMethod_xetht")]
