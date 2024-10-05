@@ -30,6 +30,7 @@ window/per_pixel_transparency/allowed=true
 [file_customization]
 
 folder_colors={
+"res://ai/tasks/trees/": "orange",
 "res://creature/": "teal"
 }
 

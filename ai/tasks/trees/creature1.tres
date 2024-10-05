@@ -1,0 +1,33 @@
+[gd_resource type="BehaviorTree" load_steps=9 format=3 uid="uid://dyk8qhyj3qqbm"]
+
+[ext_resource type="Script" path="res://ai/tasks/choose_random_position.gd" id="1_4ydmv"]
+[ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_43w57"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_gjq3t"]
+
+[sub_resource type="BTAction" id="BTAction_mjv0n"]
+script = ExtResource("1_4ydmv")
+range_min_in_dir = 40.0
+range_max_in_dir = 100.0
+position_var = &"pos"
+dir_var = &"dir"
+
+[sub_resource type="BTAction" id="BTAction_8xsle"]
+script = ExtResource("2_43w57")
+target_pos_var = &"pos"
+dir_var = &"dir"
+speed_var = 40
+tolerance = 10
+
+[sub_resource type="BTWait" id="BTWait_co74c"]
+
+[sub_resource type="BTSequence" id="BTSequence_ulfjm"]
+custom_name = "RandomMoveSequence"
+children = [SubResource("BTAction_mjv0n"), SubResource("BTAction_8xsle"), SubResource("BTWait_co74c")]
+
+[sub_resource type="BTSelector" id="BTSelector_rx7ly"]
+children = [SubResource("BTSequence_ulfjm")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_gjq3t")
+root_task = SubResource("BTSelector_rx7ly")
