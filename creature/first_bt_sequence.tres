@@ -1,7 +1,37 @@
-[gd_resource type="BTSequence" load_steps=2 format=3 uid="uid://co1cnaxnuossw"]
+[gd_resource type="BTSequence" load_steps=10 format=3 uid="uid://co1cnaxnuossw"]
 
-[sub_resource type="BTCallMethod" id="BTCallMethod_xetht"]
-method = &"slide_left"
+[sub_resource type="BTWait" id="BTWait_pktlm"]
+
+[sub_resource type="BBNode" id="BBNode_yw2wp"]
+saved_value = NodePath("Ecosystem/Fauna/Creature/AnimationPlayer")
+resource_name = "Ecosystem/Fauna/Creature/AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ssyoc"]
+animation_player = SubResource("BBNode_yw2wp")
+animation_name = &"idle"
+
+[sub_resource type="BTWait" id="BTWait_5imov"]
+duration = 2.0
+
+[sub_resource type="BBNode" id="BBNode_673s0"]
+saved_value = NodePath("Ecosystem/Fauna/Creature/AnimationPlayer")
+resource_name = "Ecosystem/Fauna/Creature/AnimationPlayer"
+
+[sub_resource type="BTStopAnimation" id="BTStopAnimation_jr1ba"]
+animation_player = SubResource("BBNode_673s0")
+
+[sub_resource type="BBVariant" id="BBVariant_afjsv"]
+type = 4
+saved_value = "explore_left"
+resource_name = "explore_left"
+
+[sub_resource type="BBNode" id="BBNode_1ukkk"]
+saved_value = NodePath("Ecosystem/Fauna/Creature")
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_320rw"]
+node = SubResource("BBNode_1ukkk")
+method = &"set_state"
+args = Array[BBVariant]([SubResource("BBVariant_afjsv")])
 
 [resource]
-children = [SubResource("BTCallMethod_xetht")]
+children = [SubResource("BTWait_pktlm"), SubResource("BTPlayAnimation_ssyoc"), SubResource("BTWait_5imov"), SubResource("BTStopAnimation_jr1ba"), SubResource("BTCallMethod_320rw")]
