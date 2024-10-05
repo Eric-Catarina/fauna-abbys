@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgmgqjbyuv6vv"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ib4rp"]
+[ext_resource type="Texture2D" uid="uid://21irab4stkxa" path="res://icon.svg" id="1_puacw"]
+[ext_resource type="Texture2D" uid="uid://b2s5gcj5xuytp" path="res://alien-removebg-preview.png" id="2_epxo7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pofpn"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ib4rp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Ecosystem" type="Node2D" parent="."]
+
+[node name="Flora" type="Node2D" parent="Ecosystem"]
+
+[node name="Fauna" type="Node2D" parent="Ecosystem"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ecosystem"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ecosystem/StaticBody2D"]
+shape = SubResource("RectangleShape2D_pofpn")
+
+[node name="EnvironmentController" type="Node2D" parent="."]
+
+[node name="InteractionManager" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(602, 74)
+texture = ExtResource("1_puacw")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(82, 228)
+texture = ExtResource("1_puacw")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(69, 74)
+texture = ExtResource("1_puacw")
+
+[node name="Icon5" type="Sprite2D" parent="."]
+position = Vector2(610, 245)
+texture = ExtResource("1_puacw")
+
+[node name="Icon6" type="Sprite2D" parent="."]
+position = Vector2(1147, 79)
+texture = ExtResource("1_puacw")
+
+[node name="Icon7" type="Sprite2D" parent="."]
+position = Vector2(1838, 229)
+texture = ExtResource("1_puacw")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(1840, 81)
+texture = ExtResource("1_puacw")
+
+[node name="Alien-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(1072, 249)
+scale = Vector2(0.45, 0.422042)
+texture = ExtResource("2_epxo7")
