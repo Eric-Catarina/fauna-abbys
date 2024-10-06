@@ -5,7 +5,6 @@ var window_size: Vector2
 
 func _ready() -> void:
 	window_size = DisplayServer.screen_get_size()
-	print(window_size)
 	# Defina o tamanho da janela para ocupar toda a largura do monitor e altura desejada
 	DisplayServer.window_set_size(Vector2(window_size.x, desired_height))
 	# Posicione a janela na parte inferior da tela

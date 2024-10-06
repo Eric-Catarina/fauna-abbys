@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bggol8lami4jk" path="res://creature/creature.tscn" id="3_hidma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pofpn"]
+size = Vector2(20, 1943)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ib4rp")
@@ -24,9 +25,34 @@ centered = false
 
 [node name="Fauna" type="Node2D" parent="Ecosystem"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Ecosystem"]
+[node name="WallLeft" type="StaticBody2D" parent="Ecosystem"]
+collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ecosystem/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ecosystem/WallLeft"]
+position = Vector2(0, 222.5)
+shape = SubResource("RectangleShape2D_pofpn")
+
+[node name="WallLeft2" type="StaticBody2D" parent="Ecosystem"]
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ecosystem/WallLeft2"]
+position = Vector2(936, 11)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_pofpn")
+
+[node name="WallLeft3" type="StaticBody2D" parent="Ecosystem"]
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ecosystem/WallLeft3"]
+position = Vector2(946, 412)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_pofpn")
+
+[node name="WallRight" type="StaticBody2D" parent="Ecosystem"]
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ecosystem/WallRight"]
+position = Vector2(1918, 222.5)
 shape = SubResource("RectangleShape2D_pofpn")
 
 [node name="EnvironmentController" type="Node2D" parent="."]
@@ -34,13 +60,16 @@ shape = SubResource("RectangleShape2D_pofpn")
 [node name="InteractionManager" type="Node2D" parent="."]
 
 [node name="Creature" parent="." instance=ExtResource("3_hidma")]
-position = Vector2(778, 233)
+position = Vector2(630, 278)
 
 [node name="Creature2" parent="." instance=ExtResource("3_hidma")]
-position = Vector2(186, 165)
-
-[node name="Creature3" parent="." instance=ExtResource("3_hidma")]
-position = Vector2(1367, 336)
+position = Vector2(1210, 251)
+rotation = -0.261799
 
 [node name="Creature4" parent="." instance=ExtResource("3_hidma")]
-position = Vector2(1560, 159)
+position = Vector2(1703, 204)
+rotation = -0.261799
+
+[node name="Creature3" parent="." instance=ExtResource("3_hidma")]
+position = Vector2(169, 211)
+rotation = -0.261799

@@ -35,6 +35,11 @@ folder_colors={
 "res://creature/": "teal"
 }
 
+[layer_names]
+
+2d_physics/layer_1="wall"
+2d_physics/layer_4="creature"
+
 [piforge_ai]
 
 api_key="d3a1e378Y8I8o6B7L0m6e0Y0F69141r3GQLXZNI6Cjo7IdLG9LZF6eYaY49IZeXG"

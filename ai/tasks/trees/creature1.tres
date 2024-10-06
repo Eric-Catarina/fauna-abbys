@@ -15,8 +15,10 @@ animation_name = &"idle"
 
 [sub_resource type="BTAction" id="BTAction_mjv0n"]
 script = ExtResource("1_4ydmv")
-range_min_in_dir = 40.0
-range_max_in_dir = 300.0
+range_min_in_dir_x = 60.0
+range_max_in_dir_x = 150.0
+range_min_in_dir_y = 30.0
+range_max_in_dir_y = 100.0
 position_var = &"pos"
 dir_var = &"dir"
 
