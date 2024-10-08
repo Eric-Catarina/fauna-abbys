@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsebs1rcqy188"]
+
+[ext_resource type="Texture2D" uid="uid://c3fqox01ot2d0" path="res://lake.png" id="1_mpuwl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u48vk"]
+radius = 91.022
+
+[node name="Lake" type="StaticBody2D"]
+
+[node name="Lake" type="Sprite2D" parent="."]
+scale = Vector2(0.196777, 0.196777)
+texture = ExtResource("1_mpuwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u48vk")

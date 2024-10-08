@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgmgqjbyuv6vv"]
+[gd_scene load_steps=7 format=3 uid="uid://dgmgqjbyuv6vv"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ib4rp"]
 [ext_resource type="Texture2D" uid="uid://c68im8iofxf3i" path="res://mars-bg-2.png" id="2_cqbwk"]
+[ext_resource type="Script" path="res://ecosystem.gd" id="2_reetl"]
+[ext_resource type="PackedScene" uid="uid://bsebs1rcqy188" path="res://lake.tscn" id="3_7hxpb"]
 [ext_resource type="PackedScene" uid="uid://bggol8lami4jk" path="res://creature/creature.tscn" id="3_hidma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pofpn"]
@@ -14,6 +16,7 @@ script = ExtResource("1_ib4rp")
 anchor_mode = 0
 
 [node name="Ecosystem" type="Node2D" parent="."]
+script = ExtResource("2_reetl")
 
 [node name="Mars-bg-2" type="Sprite2D" parent="Ecosystem"]
 position = Vector2(0, 80)
@@ -55,21 +58,19 @@ collision_mask = 9
 position = Vector2(1918, 222.5)
 shape = SubResource("RectangleShape2D_pofpn")
 
+[node name="Lake" parent="Ecosystem" groups=["Water"] instance=ExtResource("3_7hxpb")]
+position = Vector2(929, 296)
+collision_layer = 4
+collision_mask = 8
+
 [node name="EnvironmentController" type="Node2D" parent="."]
 
 [node name="InteractionManager" type="Node2D" parent="."]
 
-[node name="Creature" parent="." instance=ExtResource("3_hidma")]
-position = Vector2(630, 278)
-
 [node name="Creature2" parent="." instance=ExtResource("3_hidma")]
-position = Vector2(1210, 251)
+position = Vector2(632, 306)
 rotation = -0.261799
 
 [node name="Creature4" parent="." instance=ExtResource("3_hidma")]
-position = Vector2(1703, 204)
-rotation = -0.261799
-
-[node name="Creature3" parent="." instance=ExtResource("3_hidma")]
-position = Vector2(169, 211)
+position = Vector2(1227, 302)
 rotation = -0.261799
