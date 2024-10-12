@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=21 format=3 uid="uid://dyk8qhyj3qqbm"]
+[gd_resource type="BehaviorTree" load_steps=20 format=3 uid="uid://dyk8qhyj3qqbm"]
 
 [ext_resource type="Script" path="res://ai/tasks/choose_random_position.gd" id="1_4ydmv"]
 [ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_43w57"]
@@ -29,6 +29,7 @@ animation_name = &"idle"
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_v4gb4"]
 animation_player = ExtResource("3_poi0p")
 animation_name = &"drinking"
+blend = 0.1
 
 [sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_8akqn"]
 animation_player = ExtResource("3_poi0p")
@@ -39,12 +40,8 @@ max_time = 5.0
 custom_name = "Drink Water"
 children = [SubResource("BTCondition_6mbsv"), SubResource("BTStopAnimation_khkme"), SubResource("BTPlayAnimation_v4gb4"), SubResource("BTAwaitAnimation_8akqn")]
 
-[sub_resource type="BTRunLimit" id="BTRunLimit_w5msj"]
+[sub_resource type="BTCooldown" id="BTCooldown_g8q5j"]
 children = [SubResource("BTSequence_wxm1y")]
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_hmoiw"]
-animation_player = ExtResource("3_poi0p")
-animation_name = &"idle"
 
 [sub_resource type="BTAction" id="BTAction_mjv0n"]
 script = ExtResource("1_4ydmv")
@@ -67,10 +64,10 @@ max_duration = 4.0
 
 [sub_resource type="BTSequence" id="BTSequence_ulfjm"]
 custom_name = "RandomMoveSequence"
-children = [SubResource("BTPlayAnimation_hmoiw"), SubResource("BTAction_mjv0n"), SubResource("BTAction_8xsle"), SubResource("BTRandomWait_5lvab")]
+children = [SubResource("BTAction_mjv0n"), SubResource("BTAction_8xsle"), SubResource("BTRandomWait_5lvab")]
 
 [sub_resource type="BTSelector" id="BTSelector_g6fa2"]
-children = [SubResource("BTRunLimit_yq2j8"), SubResource("BTRunLimit_w5msj"), SubResource("BTSequence_ulfjm")]
+children = [SubResource("BTRunLimit_yq2j8"), SubResource("BTCooldown_g8q5j"), SubResource("BTSequence_ulfjm")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_gjq3t")
